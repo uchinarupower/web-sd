@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <!--<link href="./css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- style.css -->
+    <link rel="stylesheet" href="css/smashdata.css">
+  </head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top p=0">
+  <a class="navbar-brand" href="index.html">
+    <!--<img src="./img/logo.png" width="20" height="20" class="d-inline-block align-top" alt="" >-->
+    Smash Data
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerMenu">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active"> <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a></li>
+          <li class="nav-item"> <a class="nav-link" href="./stats.html">戦績</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="#">使用キャラ分析</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="#">対戦キャラ分析</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="#">ルール・ステージ分析</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="#">撃墜技・パターン分析</a> </li>
+          <li class="nav-item"> <a class="nav-link disabled" href="#">対戦環境分析(今後実装予定)</a> </li>
+      </ul>
+  </div>
+</nav>
+
+<div  id="home" class="container-fluid">
+  <main class="col-12 col-md-9 col-xl-4 pb-3 pl-md-5 order-xl-2 overflow-hidden justify-content-center">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h4">戦績の記録</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-lg-12">
+        <div>
+          <!-- Button trigger modal -->
+          <button id="my_char_btn" type="button" class="btn btn-outline-success w-47" data-toggle="modal" data-target="#exampleModalLong" data-whatever="使用キャラを選択">使用キャラを選択</button>
+          <button id="enemy_char_btn" type="button" class="btn btn-outline-success w-47" data-toggle="modal" data-target="#exampleModalLong" data-whatever="対戦キャラを選択">対戦キャラを選択</button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog justify-content-center" role="document">
+              <div class="modal-content justify-content-center" style="width: 359px;">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">あなたの使用キャラ</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div id="char_grid">
+                    <ul class="char_list">
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/1.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/2.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/3.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/4.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/5.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/6.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/7.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/8.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/9.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/10.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/11.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/12.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/13.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/14.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/15.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/16.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/17.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/18.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/19.png" alt=""></button></li>
+                      <li><button type="button" class="char_btn" data-dismiss="modal"><img class="thubnail" src="./img/icon/20.png" alt=""></button></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-lg-12 vs">
+        <button id="my_char_imgbtn" class="btn float-left" type="button" data-toggle="modal" data-target="#exampleModalLong" data-whatever="使用キャラを選択"><img id="my_char_img" class="selected_char" src=""></button>
+        <button id="enemy_char_imgbtn" class="btn float-right" type="button" data-toggle="modal" data-target="#exampleModalLong" data-whatever="対戦キャラを選択"><img id="enemy_char_img" class="selected_char" src=""></button>
+        <img id="vs_img" class="disp-block blockcenter" align="middle" src="./img/vs.png">
+      </div>
+
+      <div class="rule-set col-12">
+        <div class="col-12 pt-2 pb-1 mb-2 border-bottom">
+          <h6 class="mb=0">ルール設定</h6>
+        </div>
+
+        <!--乱闘形式-->
+        <!--
+          <div class="row rule-column">
+            <div class="col-3 px-0"><label class="control-label">乱闘形式</label></div>
+            <div class="btn-group btn-group-toggle col-9" data-toggle="buttons">
+              <label class="btn btn-sm btn-outline-primary rule-factor">
+                <input type="radio" name="names" id="option1" autocomplete="off" checked>大乱闘
+              </label>
+              <label class="btn btn-sm btn-outline-primary rule-factor">
+                <input type="radio" name="names" id="option2" autocomplete="off">チーム乱闘
+              </label>
+              <label class="btn btn-sm btn-outline-primary rule-factor active">
+                <input type="radio" name="names" id="option2" autocomplete="off">1 on 1
+              </label>
+            </div>
+          </div>
+        -->
+        <!--ルール-->
+        <!--
+        <div class="row rule-column">
+          <div class="col-3 px-0"><label class="control-label">ルール</label></div>
+          <div class="btn-group btn-group-toggle col-9" data-toggle="buttons">
+            <label class="btn btn-sm btn-outline-primary rule-factor">
+              <input type="radio" name="options" autocomplete="off" checked>タイム制
+            </label>
+            <label class="btn btn-sm btn-outline-primary rule-factor active">
+              <input type="radio" name="options" autocomplete="off">ストック制
+            </label>
+            <label class="btn btn-sm btn-outline-primary rule-factor">
+              <input type="radio" name="options" autocomplete="off">体力制
+            </label>
+          </div>
+        </div>
+        -->
+
+        <div class="row rule-column">
+          <div class="col-3 px-0"><label class="control-label">ストック数</label></div>
+          <div class="btn-group btn-group-toggle col-9" data-toggle="buttons">
+            <label class="btn btn-sm btn-outline-primary rule-factor">
+              <input type="radio" name="stock" autocomplete="off" value="1">1
+            </label>
+            <label class="btn btn-sm btn-outline-primary rule-factor">
+              <input type="radio" name="stock" autocomplete="off" value="2">2
+            </label>
+            <label class="btn btn-sm btn-outline-primary rule-factor active">
+              <input type="radio" name="stock" autocomplete="off" value="3" checked>3
+            </label>
+          </div>
+        </div>
+
+        <!--追加ステージ 隠し-->
+
+        <div class="row rule-column">
+          <div class="col-3 px-0"><label class="control-label">ステージ</label></div>
+          <div class="col-9 px-0">
+            <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
+              <label class="btn btn-sm btn-outline-primary rule-factor active" onclick="hide_add_stage()">
+                <input type="radio" name="stage" autocomplete="off" value="終点" checked>終点
+              </label>
+              <label class="btn btn-sm btn-outline-primary rule-factor" onclick="hide_add_stage()">
+                <input type="radio" name="stage" autocomplete="off" value="戦場">戦場
+              </label>
+              <label class="btn btn-sm btn-outline-primary rule-factor" data-toggle="collapse" data-target="#collapseAddstage" aria-expanded="false" aria-controls="collapseAddstage">
+                <input type="radio" name="stage" autocomplete="off" value="その他">その他
+              </label>
+            </div>
+            <div class="collapse" id="collapseAddstage">
+              <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
+                <label class="btn btn-sm btn-outline-primary ">
+                  <input type="radio" name="add_stage" autocomplete="off" value="ポケスタ2">ポケスタ2
+                </label>
+                <label class="btn btn-sm btn-outline-primary ">
+                  <input type="radio" name="add_stage" autocomplete="off" value="村と街">村と街
+                </label>
+                <label class="btn btn-sm btn-outline-primary">
+                  <input type="radio" name="add_stage" autocomplete="off" value="すま村">すま村
+                </label>
+                <label class="btn btn-sm btn-outline-primary">
+                  <input type="radio" name="add_stage" autocomplete="off" value="カロス">カロス
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!--
+        <div class="collapse" id="collapseAddstage">
+          <div class="row hidden-stage-column">
+            <div class="col-3 px-0"><label class="control-label">ギミックなし</label></div>
+            <div class="btn-group btn-group-toggle col-9" data-toggle="buttons">
+              <label class="btn btn-sm btn-outline-primary rule-factor">
+                <input type="radio" name="options" autocomplete="off">ポケスタ2
+              </label>
+              <label class="btn btn-sm btn-outline-primary rule-factor-hidden-stage">
+                <input type="radio" name="options" autocomplete="off">村と街
+              </label>
+              <label class="btn btn-sm btn-outline-primary rule-factor-hidden-stage">
+                <input type="radio" name="options" autocomplete="off">スマ村
+              </label>
+              <label class="btn btn-sm btn-outline-primary rule-factor-hidden-stage">
+                <input type="radio" name="options" autocomplete="off">カロス
+              </label>
+            </div>
+          </div>
+        </div>-->
+
+
+
+        <div class="row rule-column">
+          <div class="col-3 px-0"><label class="control-label">環境</label></div>
+          <div class="col-9 px-0">
+            <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
+              <label class="btn btn-sm btn-outline-primary rule-factor active" onclick="show_combat_power()">
+                <input type="radio" name="environment" autocomplete="off" value="オンライン" checked>オンライン
+              </label>
+              <label class="btn btn-sm btn-outline-primary rule-factor" onclick="hide_combat_power()">
+                <input type="radio" name="environment" autocomplete="off" value="オフライン">オフライン
+              </label>
+            </div>
+            <div class="collapse show" id="collapseCombatpower">
+              <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
+                <label class="btn btn-sm btn-outline-primary active">
+                  <input type="radio" name="combat_power" autocomplete="off" value="vip" checked>vip
+                </label>
+                <label class="btn btn-sm btn-outline-primary">
+                  <input type="radio" name="combat_power" autocomplete="off" value="600万">600万~
+                </label>
+                <label class="btn btn-sm btn-outline-primary">
+                  <input type="radio" name="combat_power" autocomplete="off" value="400万">400万~
+                </label>
+                <label class="btn btn-sm btn-outline-primary">
+                  <input type="radio" name="combat_power" autocomplete="off" value="200万">200万~
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-outline-info btn-lg btn-block" data-toggle="collapse" data-target="#collapseAddrule" aria-expanded="false" aria-controls="collapseAddrule">
+          詳細設定
+        </button>
+
+        <div class="collapse" id="collapseAddrule">
+          <!--チャージ切り札-->
+          <div class="row rule-column">
+            <div class="col-3 px-0"><label class="control-label charge_kiri">チャージ切り札</label></div>
+            <div class="btn-group btn-group-toggle col-9" data-toggle="buttons">
+              <label class="btn btn-sm btn-outline-primary rule-factor active">
+                <input type="radio" name="charge_kiri" autocomplete="off" value="なし" checked>なし
+              </label>
+              <label class="btn btn-sm btn-outline-primary rule-factor">
+                <input type="radio" name="charge_kiri" autocomplete="off" value="あり">あり
+              </label>
+            </div>
+          </div>
+
+          <div class="row rule-column">
+            <div class="col-3 px-0"><label class="control-label">アイテム</label></div>
+            <div class="btn-group btn-group-toggle col-9" data-toggle="buttons">
+              <label class="btn btn-sm btn-outline-primary rule-factor active">
+                <input type="radio" name="item" autocomplete="off" value="なし" checked>なし
+              </label>
+              <label class="btn btn-sm btn-outline-primary rule-factor">
+                <input type="radio" name="item" autocomplete="off" value="あり">あり
+              </label>
+            </div>
+          </div>
+
+          <div class="row rule-column">
+            <div class="col-3 px-0"><label class="control-label">対戦相手名</label></div>
+            <div class="col-9 px-0">
+              <div class="row m-0">
+                <div class="col-12">
+                  <select id="vs_HN" class="form-control form-control-sm">
+                    <option value="0">未選択</option>
+                  </select>
+                </div>
+                <div class="col-9">
+                  <div class="form-group my-2">
+                    <label class="sr-only">対戦相手名</label>
+                    <input id="vs_HN_input" class="form-control form-control-sm" placeholder="対戦相手のHNを入力">
+                  </div>
+                </div>
+                <div class="col-3">
+                    <div class="my-2 pl-2"><button id="vs_HN_add" type="submit" class="btn btn-primary form-control">追加</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 win-lose-col">
+          <button id="win" type="button" class="btn btn-danger btn-lg win-lose-btn" onclick="save_result(this)">Win</button>
+        </div>
+        <div class="col-6 win-lose-col">
+          <button id="lose" type="button" class="btn btn-success btn-lg win-lose-btn" onclick="save_result(this)" >Lose</button>
+        </div>
+      </div>
+      <div class="result-check-box">
+        <h6 id="save_history_tag">Save history</h6>
+        <p></p>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="./js/smashdata.js"></script>
+<!--<script src="js/Jquery.selmodal.js"></script>
+<script type="text/javascript">
+$(function(){
+  $(".selmodaltest").selModal();
+});
+</script>-->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var btn = document.getElementById("my_char_btn");
+    var my_img = document.getElementById("my_char_img");
+    var enemy_img = document.getElementById("enemy_char_img");
+    var rect = btn.getBoundingClientRect();
+    var offset_width = (rect.width/2) - 42;
+    $("#my_char_imgbtn").css("margin-left",offset_width);
+    my_img.src = "./img/icon/1.png";
+    $("#enemy_char_imgbtn").css("margin-right",offset_width);
+    enemy_img.src = "./img/icon/1.png";
+  });
+
+  $(window).resize(function(){
+    var btn = document.getElementById("my_char_btn");
+    var rect = btn.getBoundingClientRect();
+    var offset_width = (rect.width/2) - 42;
+    $("#my_char_imgbtn").css("margin-left",offset_width);
+    $("#enemy_char_imgbtn").css("margin-right",offset_width);
+  });
+
+  $('#exampleModalLong').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var title = button.data('whatever');
+    var modal = $(this);
+    modal.find('.modal-title').text(title);
+
+    //モーダルウィンドウの位置調整
+    $(this).css("display", "block");
+    var dialog = $(this).find(".modal-dialog");
+    var offset_modal = ($(window).innerWidth() - 359) / 2;
+    dialog.css("margin-left", offset_modal);
+  });
+
+  $(".char_btn").on("click",function(){
+    var title = document.getElementById('exampleModalLongTitle').textContent;
+    var src = $(this).children("img").attr("src");
+    console.log(src);
+    //$("#my_char_img").attr("src", src);
+    //$("#enemy_char_img").attr("src", src);
+
+    if (title === "使用キャラを選択") {
+      $("#my_char_img").attr("src", src);
+      console.log("!");
+    }
+    else if (title === "対戦キャラを選択") {
+      $("#enemy_char_img").attr("src", src);
+      console.log("?");
+    }
+  });
+
+  function hide_add_stage(){
+    $("#collapseAddstage").collapse("hide");
+  }
+
+  function show_combat_power(){
+    $("#collapseCombatpower").collapse("show");
+  }
+
+  function hide_combat_power(){
+    $("#collapseCombatpower").collapse("hide");
+  }
+
+  $("#vs_HN_add").click(function(){
+    var name = $("#vs_HN_input").val();
+    var name_info = "<option>" + name + "</option>"
+    if (name !== ""){
+      $('#vs_HN').append(name_info);
+    }
+  });
+
+  function save_result(win_or_lose){
+    $.cookie.json = true;
+    $.cookie("cntaaa","1");
+    var my_char_now = img_to_char(document.getElementById("my_char_img").src.split("/").pop());
+    var enemy_char_now = img_to_char(document.getElementById("enemy_char_img").src.split("/").pop());
+    var stock_now = $("input[name='stock']:checked").val();
+    var stage_now = $("input[name='stage']:checked").val();
+    var environment_now = $("input[name='environment']:checked").val();
+    var combat_power_now = $("input[name='combat_power']:checked").val();
+    var charge_kiri_now = $("input[name='charge_kiri']:checked").val();
+    var item_now = $("input[name='item']:checked").val();
+    var vs_HN_now = $("#vs_HN option:checked").text();
+    var game_now = win_or_lose.id;
+    if (stage_now === "その他"){
+      stage_now = $("input[name='add_stage']:checked").val();
+    }
+    var cnt = $.cookie("cntaaa");
+    console.log(cnt);
+    if(cnt){
+      console.log("!");
+    }
+    else{
+      cnt = 0;
+    }
+
+    var result = {
+      id : cnt,
+      my_char : my_char_now,
+      enemy_char : enemy_char_now,
+      stock : stock_now,
+      stage : stage_now,
+      environment : environment_now,
+      combat_power : combat_power_now,
+      charge_kiri : charge_kiri_now,
+      item : item_now,
+      vs_HN : vs_HN_now,
+      game : game_now
+    }
+    console.log(result);
+    //$.cookie('data1', data);
+
+
+    if (game_now === "win"){
+      bun = "<p><font color='danger'>Win&nbsp;</font>" + "&nbsp&nbsp&nbsp" + my_char_now + "×" + enemy_char_now + "</p>";
+      $("#save_history_tag").after(bun);
+    }
+    else {
+      bun = "<p><font color='success'>Lose</font>"+ "&nbsp&nbsp&nbsp" + my_char_now + "×" + enemy_char_now + "</p>";;
+      $("#save_history_tag").after(bun);
+    }
+  }
+  /*$(":radio").change(function() {
+  alert($(':radio:checked').attr("id"));
+});*/
+</script>
+
+
+</body>
+</html>
