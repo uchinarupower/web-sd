@@ -398,7 +398,7 @@ $(function(){
 
   function save_result(win_or_lose){
     $.cookie.json = true;
-    $.cookie("cntaaa","1");
+    //$.cookie("cntaaa","1");
     var my_char_now = img_to_char(document.getElementById("my_char_img").src.split("/").pop());
     var enemy_char_now = img_to_char(document.getElementById("enemy_char_img").src.split("/").pop());
     var stock_now = $("input[name='stock']:checked").val();
@@ -412,14 +412,15 @@ $(function(){
     if (stage_now === "その他"){
       stage_now = $("input[name='add_stage']:checked").val();
     }
-    var cnt = $.cookie("cntaaa");
+    var cnt = $.cookie("cnt");
     console.log(cnt);
     if(cnt){
-      console.log("!");
+      cnt++;
     }
     else{
       cnt = 0;
     }
+    $.cookie("ctn", ctn);
 
     var result = {
       id : cnt,
