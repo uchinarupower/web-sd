@@ -290,19 +290,20 @@
               </div>
             </div>
           </div>
-      </div>
+        </div>
 
-      <div class="row">
-        <div class="col-6 win-lose-col">
-          <button id="win" type="button" class="btn btn-danger btn-lg win-lose-btn" onclick="save_result(this)">Win</button>
+        <div class="row">
+          <div class="col-6 win-lose-col">
+            <button id="win" type="button" class="btn btn-danger btn-lg win-lose-btn" onclick="save_result(this)">Win</button>
+          </div>
+          <div class="col-6 win-lose-col">
+            <button id="lose" type="button" class="btn btn-success btn-lg win-lose-btn" onclick="save_result(this)" >Lose</button>
+          </div>
         </div>
-        <div class="col-6 win-lose-col">
-          <button id="lose" type="button" class="btn btn-success btn-lg win-lose-btn" onclick="save_result(this)" >Lose</button>
+        <div class="result-check-box">
+          <h6 id="save_history_tag">Save history</h6>
+          <p></p>
         </div>
-      </div>
-      <div class="result-check-box">
-        <h6 id="save_history_tag">Save history</h6>
-        <p></p>
       </div>
     </div>
   </main>
@@ -338,6 +339,12 @@ $(function(){
     my_img.src = "./img/icon/01.png";
     $("#enemy_char_imgbtn").css("margin-right",offset_width);
     enemy_img.src = "./img/icon/01.png";
+
+    var url_hash = location.hash;
+    if (url_hash){
+      console.log("hash");
+
+    }
   });
 
   $(window).resize(function(){

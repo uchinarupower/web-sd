@@ -99,13 +99,13 @@ $(window).on("load",function(){
         bun = "<tr><th><font class='judge' color='danger'>Win&nbsp;</font></th>"
               + "<th><img class='result-table-icon' src=./img/icon/" + cookie.my_char_path + " alt=''></th>"
               + "<th><img class='result-table-icon' src=./img/icon/" + cookie.enemy_char_path + " alt=''></th>"
-              + "<th><button type='button' class='btn btn-sm btn-info' onclick='edit_result(cookie.id)'>編集</th>";
+              + "<th><button type='button' class='btn btn-sm btn-info' onclick='edit_result(" + i + ")'>編集</th>";
       }
       else{
         bun = "<tr><th><font class='judge' color='success'>Lose</font></div></th>"
               + "<th><img class='result-table-icon' src=./img/icon/" + cookie.my_char_path + " alt=''></th>"
               + "<th><img class='result-table-icon' src=./img/icon/" + cookie.enemy_char_path + " alt=''></th>"
-              + "<th><button type='button' class='btn btn-sm btn-info editing-btn' onclick='edit_result(cookie.id)'>編集</th>";
+              + "<th><button type='button' class='btn btn-sm btn-info editing-btn' onclick='edit_result(" + i + ")'>編集</th>";
       }
       $("#table_body").after(bun);
       console.log(bun);
@@ -115,7 +115,7 @@ $(window).on("load",function(){
 });
 
 function edit_result(cookie_id){
-  window.location.href("./index.html#" + cookie_id)
+  window.location.href("./index.html#id=" + cookie_id)
 }
   /*var result = {
     id : cnt,
