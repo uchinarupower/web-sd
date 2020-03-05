@@ -94,8 +94,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script src="./js/stats.js"></script>
 <script type="text/javascript">
-$(window).on(function(){
+$(window).on("load",function(){
   $.cookie.json = true;
+  console.log("!");
 
   var cnt = $.cookie("cnt", Number);
   if(typeof cnt !== "undefined"){
