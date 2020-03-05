@@ -336,6 +336,12 @@ $(function(){
     my_img.src = "./img/icon/01.png";
     $("#enemy_char_imgbtn").css("margin-right",offset_width);
     enemy_img.src = "./img/icon/01.png";
+    $.cookie("result_32","", {expires:-1, path: "/" });
+    $.cookie("result_33","", {expires:-1, path: "/" });
+    $.cookie("result_34","", {expires:-1, path: "/" });
+    $.cookie("result_35","", {expires:-1, path: "/" });
+    $.cookie("result_36","", {expires:-1, path: "/" });
+    $.cookie("result_37","", {expires:-1, path: "/" });
   });
 
   $(window).resize(function(){
@@ -420,7 +426,8 @@ $(function(){
     else{
       cnt++;
     }
-    $.cookie("cnt", cnt, {expires:365, path: "/" });
+    $.cookie("cnt", cnt, {path: "/" });
+
 
     var result = {
       id : cnt,
