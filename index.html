@@ -416,12 +416,9 @@ $(function(){
     var cnt = $.cookie("cnt", Number);
     if(typeof cnt === "undefined"){
       cnt = 0;
-      console.log(cnt);
-      console.log("!");
     }
     else{
       cnt++;
-      console.log(cnt);
     }
     $.cookie("cnt", cnt, {expires:365, path: "/" });
 
@@ -438,8 +435,10 @@ $(function(){
       vs_HN : vs_HN_now,
       game : game_now
     }
-    console.log(result);
-    //$.cookie('data1', data);
+
+    var tag = "result_" + cnt;
+    console.log(tag);
+    $.cookie(tag, result);
 
 
     if (game_now === "win"){
