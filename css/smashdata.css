@@ -222,6 +222,11 @@ selected_char_img
 #vs_img {
   width: 24px;
   height: 24px;
+  margin: 40px auto;
+}
+
+#vs-area {
+  margin: 0;
 }
 
 /*.vs {
