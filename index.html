@@ -402,8 +402,10 @@ $(function(){
   function save_result(win_or_lose){
     $.cookie.json = true;
     //$.cookie("cntaaa","1");
-    var my_char_now = img_to_char(document.getElementById("my_char_img").src.split("/").pop());
-    var enemy_char_now = img_to_char(document.getElementById("enemy_char_img").src.split("/").pop());
+    var my_char_path_now = document.getElementById("my_char_img").src.split("/").pop();
+    var my_char_now = img_to_char(my_char_path_now);
+    var enemy_char_path_now = document.getElementById("enemy_char_img").src.split("/").pop();
+    var enemy_char_now = img_to_char(enemy_char_path_now);
     var stock_now = $("input[name='stock']:checked").val();
     var stage_now = $("input[name='stage']:checked").val();
     var environment_now = $("input[name='environment']:checked").val();
@@ -418,7 +420,7 @@ $(function(){
 
     var cnt = $.cookie("cnt", Number);
     if(typeof cnt === "undefined"){
-      cnt = 0;
+      cnt = 1;
     }
     else{
       cnt++;
@@ -429,7 +431,9 @@ $(function(){
     var result = {
       id : cnt,
       my_char : my_char_now,
+      my_char_path : my_char_path_now,
       enemy_char : enemy_char_now,
+      enemy_char_path : enemy_char_path_now,
       stock : stock_now,
       stage : stage_now,
       environment : environment_now,
