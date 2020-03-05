@@ -10,4 +10,6 @@ img.result-table-icon{
 .judge{
   margin: auto;
   padding: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
