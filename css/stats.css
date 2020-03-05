@@ -8,8 +8,6 @@ img.result-table-icon{
 }
 
 .judge{
-  margin: auto;
-  padding: auto;
-  display: table-cell;
+  display: inline-block;
   vertical-align: middle;
 }
