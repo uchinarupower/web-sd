@@ -275,7 +275,7 @@
               <div class="row m-0">
                 <div class="col-12">
                   <select id="vs_HN" class="form-control form-control-sm">
-                    <option value="0" checked="checked">未選択</option>
+                    <option value="未選択" checked="checked">未選択</option>
                   </select>
                 </div>
                 <div class="col-9">
@@ -348,12 +348,15 @@
     $.cookie.json = true;
     var url_hash = location.hash;
     if (url_hash){
+      console.log("load_result successful");
       var target = "result_" + url_hash.toString().split("=").pop();
       var cookie = $.cookie(target);
       console.log(cookie);
       my_img.src = "./img/icon/" + cookie.my_char_path;
       enemy_img.src = "./img/icon/" + cookie.enemy_char_path;
       active_reset();
+      console.log("active_reset");
+      console.log(cookie.my_char_path);
       $("#stock_" + cookie.stock).attr("checked", true);
       $("#"+cookie.stage).attr("checked", true);
       $("#"+cookie.environment).attr("checked", true);
@@ -366,7 +369,6 @@
       $("#"+cookie.combat_power).addClass("active");
       $("#charge_" + cookie.charge_kiri).addClass("active");
       $("#item_" + cookie.item).addClass("active");
-      //$("#vs_HN option").attr("checked", false);
       //console.log(cookie.vs_HN);
       if (cookie.game === "win"){
         $("#lose").addClass("disabled");
@@ -379,13 +381,13 @@
   }
 
   function active_reset(){
-    $("input[name='stock']").attr("checked", false);
+    /*$("input[name='stock']").attr("checked", false);
     $("input[name='stage']").attr("checked", false);
     $("input[name='environment']").attr("checked", false);
     $("input[name='combat_power']").attr("checked", false);
     $("input[name='charge_kiri']").attr("checked", false);
     $("input[name='item']").attr("checked", false);
-    $("#vs_HN option").attr("checked", false);
+    $("#vs_HN option").attr("checked", false);*/
     $("#stock_1").removeClass("active");
     $("#stock_2").removeClass("active");
     $("#stock_3").removeClass("active");
@@ -514,6 +516,7 @@
       game : game_now
     }
     var tag = "result_" + cnt;
+    console.log("result_save----");
     console.log(tag);
     console.log(result);
     $.cookie(tag, result);
