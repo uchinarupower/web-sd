@@ -333,6 +333,7 @@
     my_img.src = "./img/icon/01.png";
     $("#enemy_char_imgbtn").css("margin-right",offset_width);
     enemy_img.src = "./img/icon/01.png";
+    load_vs_HN();
     load_result(my_img, enemy_img);
   });
 
@@ -369,14 +370,22 @@
       $("#"+cookie.combat_power).addClass("active");
       $("#charge_" + cookie.charge_kiri).addClass("active");
       $("#item_" + cookie.item).addClass("active");
-      //console.log(cookie.vs_HN);
+
       if (cookie.game === "win"){
         $("#lose").addClass("disabled");
       }
       else{
         $("#win").addClass("disabled");
       }
+
       $("#vs_HN").val(cookie.vs_HN);
+
+      if (cookie.stage !== "終点" && cookie.stage !== "戦場"){
+        show_add_stage();
+      }
+      if (cookie.environment === "オフライン"){
+        hide_combat_power();
+      }
     }
   }
 
@@ -404,18 +413,21 @@
     $("#600万").removeClass("active");
     $("#400万").removeClass("active");
     $("#200万").removeClass("active");
-    $("charge_なし").removeClass("active");
-    $("charge_あり").removeClass("active");
-    $("item_なし").removeClass("active");
-    $("item_あり").removeClass("active");
+    $("#charge_なし").removeClass("active");
+    $("#charge_あり").removeClass("active");
+    $("#item_なし").removeClass("active");
+    $("#item_あり").removeClass("active");
   }
 
   function load_vs_HN(){
     if ($.cookie("vs_HN_list")){
+      console.log("load_vs_HN successful");
       var vs_HN_list = $.cookie("vs_HN_list").split(",");
+      console.log(vs_HN_list);
       for (var vs_HN of vs_HN_list){
-        $('#vs_HN').append("<option value='" + vs_HN + "'>" + vs_HN + "</option>");
-        console.log("<option value='" + vs_HN + "'>" + vs_HN + "</option>");
+        $('#vs_HN').append("<option value=" + vs_HN + ">" + vs_HN + "</option>");
+
+        console.log("<option value=" + vs_HN + ">" + vs_HN + "</option>");
       }
     }
   }
@@ -446,6 +458,10 @@
       $("#enemy_char_img").attr("src", src);
     }
   });
+
+  function show_add_stage(){
+    $("#collapseAddstage").collapse("show");
+  }
 
   function hide_add_stage(){
     $("#collapseAddstage").collapse("hide");
