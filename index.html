@@ -422,11 +422,9 @@
   function load_vs_HN(){
     if ($.cookie("vs_HN_list")){
       console.log("load_vs_HN successful");
-      var vs_HN_list = $.cookie("vs_HN_list").split(",");
-      console.log(vs_HN_list);
+      var vs_HN_list = $.cookie("vs_HN_list").replace(/"/g,'').split(",");
       for (var vs_HN of vs_HN_list){
         $('#vs_HN').append("<option value=" + vs_HN + ">" + vs_HN + "</option>");
-
         console.log("<option value=" + vs_HN + ">" + vs_HN + "</option>");
       }
     }
@@ -481,6 +479,7 @@
     if (name !== ""){
       $('#vs_HN').append(name_info);
       $("#vs_HN_input").val("");
+      $("#vs_HN").val(name);
       if ($.cookie("vs_HN_list")) {
         $.cookie("vs_HN_list", $.cookie("vs_HN_list") + "," + name);
       }
