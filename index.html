@@ -275,7 +275,7 @@
               <div class="row m-0">
                 <div class="col-12">
                   <select id="vs_HN" class="form-control form-control-sm">
-                    <option value="0">未選択</option>
+                    <option value="0" checked="checked">未選択</option>
                   </select>
                 </div>
                 <div class="col-9">
@@ -348,7 +348,6 @@
     $.cookie.json = true;
     var url_hash = location.hash;
     if (url_hash){
-      console.log(url_hash);
       var target = "result_" + url_hash.toString().split("=").pop();
       var cookie = $.cookie(target);
       console.log(cookie);
@@ -362,18 +361,20 @@
       $("#charge_" + cookie.charge_kiri).attr("checked", true);
       $("#item_" + cookie.item).attr("checked", true);
       $("#stock_" + cookie.stock).addClass("active");
-      $("#stock_" + cookie.stock).addClass("active");
       $("#"+cookie.stage).addClass("active");
       $("#"+cookie.environment).addClass("active");
       $("#"+cookie.combat_power).addClass("active");
       $("#charge_" + cookie.charge_kiri).addClass("active");
       $("#item_" + cookie.item).addClass("active");
+      //$("#vs_HN option").attr("checked", false);
+      //console.log(cookie.vs_HN);
       if (cookie.game === "win"){
         $("#lose").addClass("disabled");
       }
       else{
         $("#win").addClass("disabled");
       }
+      $("#vs_HN").val(cookie.vs_HN);
     }
   }
 
@@ -384,6 +385,7 @@
     $("input[name='combat_power']").attr("checked", false);
     $("input[name='charge_kiri']").attr("checked", false);
     $("input[name='item']").attr("checked", false);
+    $("#vs_HN option").attr("checked", false);
     $("#stock_1").removeClass("active");
     $("#stock_2").removeClass("active");
     $("#stock_3").removeClass("active");
@@ -406,6 +408,16 @@
     $("item_あり").removeClass("active");
   }
 
+  function load_vs_HN(){
+    if ($.cookie("vs_HN_list")){
+      var vs_HN_list = $.cookie("vs_HN_list").split(",");
+      for (var vs_HN of vs_HN_list){
+        $('#vs_HN').append("<option value='" + vs_HN + "'>" + vs_HN + "</option>");
+        console.log("<option value='" + vs_HN + "'>" + vs_HN + "</option>");
+      }
+    }
+  }
+
   $('#exampleModalLong').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget);
     var title = button.data('whatever');
@@ -422,17 +434,14 @@
   $(".char_btn").on("click",function(){
     var title = document.getElementById('exampleModalLongTitle').textContent;
     var src = $(this).children("img").attr("src");
-    console.log(src);
     //$("#my_char_img").attr("src", src);
     //$("#enemy_char_img").attr("src", src);
 
     if (title === "使用キャラを選択") {
       $("#my_char_img").attr("src", src);
-      console.log("!");
     }
     else if (title === "対戦キャラを選択") {
       $("#enemy_char_img").attr("src", src);
-      console.log("?");
     }
   });
 
@@ -450,10 +459,16 @@
 
   $("#vs_HN_add").click(function(){
     var name = $("#vs_HN_input").val();
-    var name_info = "<option>" + name + "</option>"
+    var name_info = "<option value=" + name + ">" + name + "</option>"
     if (name !== ""){
       $('#vs_HN').append(name_info);
       $("#vs_HN_input").val("");
+      if ($.cookie("vs_HN_list")) {
+        $.cookie("vs_HN_list", $.cookie("vs_HN_list") + "," + name);
+      }
+      else{
+        $.cookie("vs_HN_list", name);
+      }
     }
   });
 

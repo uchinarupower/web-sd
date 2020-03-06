@@ -87,7 +87,6 @@
 <script type="text/javascript">
 $(window).on("load",function(){
   $.cookie.json = true;
-  console.log("!");
 
   var cnt = $.cookie("cnt", Number);
   if(typeof cnt !== "undefined"){
@@ -108,7 +107,6 @@ $(window).on("load",function(){
               + "<th><button type='button' class='btn btn-sm btn-info editing-btn' onclick='edit_result(" + i + ")'>編集</th>";
       }
       $("#table_body").after(bun);
-      console.log(bun);
       console.log(cookie.id)
     }
   }
