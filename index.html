@@ -139,13 +139,13 @@
         <div class="row rule-column">
           <div class="col-3 px-0"><label class="control-label">ストック数</label></div>
           <div class="btn-group btn-group-toggle col-9" data-toggle="buttons">
-            <label class="btn btn-sm btn-outline-primary rule-factor">
+            <label id="stock_1" class="btn btn-sm btn-outline-primary rule-factor">
               <input type="radio" name="stock" autocomplete="off" value="1">1
             </label>
-            <label class="btn btn-sm btn-outline-primary rule-factor">
+            <label id="stock_2" class="btn btn-sm btn-outline-primary rule-factor">
               <input type="radio" name="stock" autocomplete="off" value="2">2
             </label>
-            <label class="btn btn-sm btn-outline-primary rule-factor active">
+            <label id="stock_3" class="btn btn-sm btn-outline-primary rule-factor active">
               <input type="radio" name="stock" autocomplete="off" value="3" checked>3
             </label>
           </div>
@@ -157,28 +157,28 @@
           <div class="col-3 px-0"><label class="control-label">ステージ</label></div>
           <div class="col-9 px-0">
             <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
-              <label class="btn btn-sm btn-outline-primary rule-factor active" onclick="hide_add_stage()">
+              <label id="終点" class="btn btn-sm btn-outline-primary rule-factor active" onclick="hide_add_stage()">
                 <input type="radio" name="stage" autocomplete="off" value="終点" checked>終点
               </label>
-              <label class="btn btn-sm btn-outline-primary rule-factor" onclick="hide_add_stage()">
+              <label id="戦場" class="btn btn-sm btn-outline-primary rule-factor" onclick="hide_add_stage()">
                 <input type="radio" name="stage" autocomplete="off" value="戦場">戦場
               </label>
-              <label class="btn btn-sm btn-outline-primary rule-factor" data-toggle="collapse" data-target="#collapseAddstage" aria-expanded="false" aria-controls="collapseAddstage">
+              <label id="その他" class="btn btn-sm btn-outline-primary rule-factor" data-toggle="collapse" data-target="#collapseAddstage" aria-expanded="false" aria-controls="collapseAddstage">
                 <input type="radio" name="stage" autocomplete="off" value="その他">その他
               </label>
             </div>
             <div class="collapse" id="collapseAddstage">
               <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
-                <label class="btn btn-sm btn-outline-primary ">
+                <label id="ポケスタ2" class="btn btn-sm btn-outline-primary ">
                   <input type="radio" name="add_stage" autocomplete="off" value="ポケスタ2">ポケスタ2
                 </label>
-                <label class="btn btn-sm btn-outline-primary ">
+                <label id="村と街" class="btn btn-sm btn-outline-primary ">
                   <input type="radio" name="add_stage" autocomplete="off" value="村と街">村と街
                 </label>
-                <label class="btn btn-sm btn-outline-primary">
+                <label id="すま村" class="btn btn-sm btn-outline-primary">
                   <input type="radio" name="add_stage" autocomplete="off" value="すま村">すま村
                 </label>
-                <label class="btn btn-sm btn-outline-primary">
+                <label id="カロス" class="btn btn-sm btn-outline-primary">
                   <input type="radio" name="add_stage" autocomplete="off" value="カロス">カロス
                 </label>
               </div>
@@ -213,25 +213,25 @@
           <div class="col-3 px-0"><label class="control-label">環境</label></div>
           <div class="col-9 px-0">
             <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
-              <label class="btn btn-sm btn-outline-primary rule-factor active" onclick="show_combat_power()">
+              <label id="オンライン" class="btn btn-sm btn-outline-primary rule-factor active" onclick="show_combat_power()">
                 <input type="radio" name="environment" autocomplete="off" value="オンライン" checked>オンライン
               </label>
-              <label class="btn btn-sm btn-outline-primary rule-factor" onclick="hide_combat_power()">
+              <label id="オフライン" class="btn btn-sm btn-outline-primary rule-factor" onclick="hide_combat_power()">
                 <input type="radio" name="environment" autocomplete="off" value="オフライン">オフライン
               </label>
             </div>
             <div class="collapse show" id="collapseCombatpower">
               <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
-                <label class="btn btn-sm btn-outline-primary active">
+                <label id="vip" class="btn btn-sm btn-outline-primary active">
                   <input type="radio" name="combat_power" autocomplete="off" value="vip" checked>vip
                 </label>
-                <label class="btn btn-sm btn-outline-primary">
+                <label id="600万" class="btn btn-sm btn-outline-primary">
                   <input type="radio" name="combat_power" autocomplete="off" value="600万">600万~
                 </label>
-                <label class="btn btn-sm btn-outline-primary">
+                <label id="400万" class="btn btn-sm btn-outline-primary">
                   <input type="radio" name="combat_power" autocomplete="off" value="400万">400万~
                 </label>
-                <label class="btn btn-sm btn-outline-primary">
+                <label id="200万" class="btn btn-sm btn-outline-primary">
                   <input type="radio" name="combat_power" autocomplete="off" value="200万">200万~
                 </label>
               </div>
@@ -248,10 +248,10 @@
           <div class="row rule-column">
             <div class="col-3 px-0"><label class="control-label charge_kiri">チャージ切り札</label></div>
             <div class="btn-group btn-group-toggle col-9" data-toggle="buttons">
-              <label class="btn btn-sm btn-outline-primary rule-factor active">
+              <label id="charge_なし" class="btn btn-sm btn-outline-primary rule-factor active">
                 <input type="radio" name="charge_kiri" autocomplete="off" value="なし" checked>なし
               </label>
-              <label class="btn btn-sm btn-outline-primary rule-factor">
+              <label id="charge_あり" class="btn btn-sm btn-outline-primary rule-factor">
                 <input type="radio" name="charge_kiri" autocomplete="off" value="あり">あり
               </label>
             </div>
@@ -260,10 +260,10 @@
           <div class="row rule-column">
             <div class="col-3 px-0"><label class="control-label">アイテム</label></div>
             <div class="btn-group btn-group-toggle col-9" data-toggle="buttons">
-              <label class="btn btn-sm btn-outline-primary rule-factor active">
+              <label id="item_なし" class="btn btn-sm btn-outline-primary rule-factor active">
                 <input type="radio" name="item" autocomplete="off" value="なし" checked>なし
               </label>
-              <label class="btn btn-sm btn-outline-primary rule-factor">
+              <label id="item_あり" class="btn btn-sm btn-outline-primary rule-factor">
                 <input type="radio" name="item" autocomplete="off" value="あり">あり
               </label>
             </div>
@@ -321,12 +321,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script src="./js/smashdata.js"></script>
-<!--<script src="js/Jquery.selmodal.js"></script>
-<script type="text/javascript">
-$(function(){
-  $(".selmodaltest").selModal();
-});
-</script>-->
 
 <script type="text/javascript">
   $(document).ready(function(){
@@ -339,12 +333,7 @@ $(function(){
     my_img.src = "./img/icon/01.png";
     $("#enemy_char_imgbtn").css("margin-right",offset_width);
     enemy_img.src = "./img/icon/01.png";
-
-    var url_hash = location.hash;
-    if (url_hash){
-      console.log("hash");
-
-    }
+    load_result(my_img, enemy_img);
   });
 
   $(window).resize(function(){
@@ -354,6 +343,68 @@ $(function(){
     $("#my_char_imgbtn").css("margin-left",offset_width);
     $("#enemy_char_imgbtn").css("margin-right",offset_width);
   });
+
+  function load_result(my_img, enemy_img){
+    $.cookie.json = true;
+    var url_hash = location.hash;
+    if (url_hash){
+      console.log(url_hash);
+      var target = "result_" + url_hash.toString().split("=").pop();
+      var cookie = $.cookie(target);
+      console.log(cookie);
+      my_img.src = "./img/icon/" + cookie.my_char_path;
+      enemy_img.src = "./img/icon/" + cookie.enemy_char_path;
+      active_reset();
+      $("#stock_" + cookie.stock).attr("checked", true);
+      $("#"+cookie.stage).attr("checked", true);
+      $("#"+cookie.environment).attr("checked", true);
+      $("#"+cookie.combat_power).attr("checked", true);
+      $("#charge_" + cookie.charge_kiri).attr("checked", true);
+      $("#item_" + cookie.item).attr("checked", true);
+      $("#stock_" + cookie.stock).addClass("active");
+      $("#stock_" + cookie.stock).addClass("active");
+      $("#"+cookie.stage).addClass("active");
+      $("#"+cookie.environment).addClass("active");
+      $("#"+cookie.combat_power).addClass("active");
+      $("#charge_" + cookie.charge_kiri).addClass("active");
+      $("#item_" + cookie.item).addClass("active");
+      if (cookie.game === "win"){
+        $("#lose").addClass("disabled");
+      }
+      else{
+        $("#win").addClass("disabled");
+      }
+    }
+  }
+
+  function active_reset(){
+    $("input[name='stock']").attr("checked", false);
+    $("input[name='stage']").attr("checked", false);
+    $("input[name='environment']").attr("checked", false);
+    $("input[name='combat_power']").attr("checked", false);
+    $("input[name='charge_kiri']").attr("checked", false);
+    $("input[name='item']").attr("checked", false);
+    $("#stock_1").removeClass("active");
+    $("#stock_2").removeClass("active");
+    $("#stock_3").removeClass("active");
+    $("#終点").removeClass("active");
+    $("#戦場").removeClass("active");
+    $("#その他").removeClass("active");
+    $("#ポケスタ2").removeClass("active");
+    $("#村と街").removeClass("active");
+    $("#すま村").removeClass("active");
+    $("#カロス").removeClass("active");
+    $("#オンライン").removeClass("active");
+    $("#オフライン").removeClass("active");
+    $("#vip").removeClass("active");
+    $("#600万").removeClass("active");
+    $("#400万").removeClass("active");
+    $("#200万").removeClass("active");
+    $("charge_なし").removeClass("active");
+    $("charge_あり").removeClass("active");
+    $("item_なし").removeClass("active");
+    $("item_あり").removeClass("active");
+  }
 
   $('#exampleModalLong').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget);
@@ -424,7 +475,6 @@ $(function(){
     if (stage_now === "その他"){
       stage_now = $("input[name='add_stage']:checked").val();
     }
-
     var cnt = $.cookie("cnt", Number);
     if(typeof cnt === "undefined"){
       cnt = 1;
@@ -433,8 +483,6 @@ $(function(){
       cnt++;
     }
     $.cookie("cnt", cnt, {path: "/" });
-
-
     var result = {
       id : cnt,
       my_char : my_char_now,
@@ -450,13 +498,10 @@ $(function(){
       vs_HN : vs_HN_now,
       game : game_now
     }
-
     var tag = "result_" + cnt;
     console.log(tag);
     console.log(result);
     $.cookie(tag, result);
-
-
     if (game_now === "win"){
       bun = "<p><font color='danger'>Win&nbsp;</font>" + "&nbsp&nbsp&nbsp" + my_char_now + "×" + enemy_char_now + "</p>";
       $("#save_history_tag").after(bun);
@@ -466,6 +511,7 @@ $(function(){
       $("#save_history_tag").after(bun);
     }
   }
+
   /*$(":radio").change(function() {
   alert($(':radio:checked').attr("id"));
 });*/
