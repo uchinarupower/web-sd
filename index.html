@@ -294,10 +294,10 @@
 
         <div class="row">
           <div class="col-6 win-lose-col">
-            <button id="win" type="button" class="btn btn-danger btn-lg win-lose-btn" onclick="save_result(this)">Win</button>
+            <button id="win" type="button" class="btn btn-danger btn-lg win-lose-btn" onclick="save_result(this, true)">Win</button>
           </div>
           <div class="col-6 win-lose-col">
-            <button id="lose" type="button" class="btn btn-success btn-lg win-lose-btn" onclick="save_result(this)" >Lose</button>
+            <button id="lose" type="button" class="btn btn-success btn-lg win-lose-btn" onclick="save_result(this, true)" >Lose</button>
           </div>
         </div>
         <div class="result-check-box">
@@ -489,9 +489,9 @@
     }
   });
 
-  function save_result(win_or_lose){
+  function save_result(win_or_lose, available_flag){
     $.cookie.json = true;
-    //$.cookie("cntaaa","1");
+    var url_hash = location.hash;
     var my_char_path_now = document.getElementById("my_char_img").src.split("/").pop();
     var my_char_now = img_to_char(my_char_path_now);
     var enemy_char_path_now = document.getElementById("enemy_char_img").src.split("/").pop();
@@ -507,16 +507,12 @@
     if (stage_now === "その他"){
       stage_now = $("input[name='add_stage']:checked").val();
     }
-    var cnt = $.cookie("cnt", Number);
-    if(typeof cnt === "undefined"){
-      cnt = 1;
-    }
-    else{
-      cnt++;
-    }
-    $.cookie("cnt", cnt, {path: "/" });
+    var id_now = decide_cnt(url_hash);
+    var available_now = available_flag;
+    var tag = "result_" + id_now;
+
     var result = {
-      id : cnt,
+      id : id_now,
       my_char : my_char_now,
       my_char_path : my_char_path_now,
       enemy_char : enemy_char_now,
@@ -528,13 +524,39 @@
       charge_kiri : charge_kiri_now,
       item : item_now,
       vs_HN : vs_HN_now,
-      game : game_now
+      game : game_now,
+      available : available_flag
     }
-    var tag = "result_" + cnt;
     console.log("result_save----");
     console.log(tag);
     console.log(result);
     $.cookie(tag, result);
+
+    if(url_hash){
+      window.location.href = ("./index.html");
+      $.cookie("hinstory_info_changed", true);
+    }
+    make_history(my_char_now, enemy_char_now);
+  }
+
+  function decide_cnt(url_hash){
+    var cnt = $.cookie("cnt", Number);
+    if (url_hash){
+      cnt = url_hash.toString().split("=").pop();
+    }
+    else{
+      if(typeof cnt === "undefined"){
+        cnt = 1;
+      }
+      else{
+        cnt++;
+      }
+    }
+    $.cookie("cnt", cnt, {path: "/" });
+    return cnt;
+  }
+
+  function make_history(game_now, my_char_now, enemy_char_now){
     if (game_now === "win"){
       bun = "<p><font color='danger'>Win&nbsp;</font>" + "&nbsp&nbsp&nbsp" + my_char_now + "×" + enemy_char_now + "</p>";
       $("#save_history_tag").after(bun);
