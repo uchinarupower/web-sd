@@ -146,7 +146,7 @@
               <input type="radio" name="stock" autocomplete="off" value="2">2
             </label>
             <label id="stock_3" class="btn btn-sm btn-outline-primary rule-factor active">
-              <input type="radio" name="stock" autocomplete="off" value="3" checked>3
+              <input type="radio" name="stock" autocomplete="off" value="3" checked="checked">3
             </label>
           </div>
         </div>
@@ -158,7 +158,7 @@
           <div class="col-9 px-0">
             <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
               <label id="終点" class="btn btn-sm btn-outline-primary rule-factor active" onclick="hide_add_stage()">
-                <input type="radio" name="stage" autocomplete="off" value="終点" checked>終点
+                <input type="radio" name="stage" autocomplete="off" value="終点" checked="checked">終点
               </label>
               <label id="戦場" class="btn btn-sm btn-outline-primary rule-factor" onclick="hide_add_stage()">
                 <input type="radio" name="stage" autocomplete="off" value="戦場">戦場
@@ -169,8 +169,8 @@
             </div>
             <div class="collapse" id="collapseAddstage">
               <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
-                <label id="ポケスタ2" class="btn btn-sm btn-outline-primary ">
-                  <input type="radio" name="add_stage" autocomplete="off" value="ポケスタ2">ポケスタ2
+                <label id="ポケスタ2" class="btn btn-sm btn-outline-primary active">
+                  <input type="radio" name="add_stage" autocomplete="off" value="ポケスタ2" checked="checked">ポケスタ2
                 </label>
                 <label id="村と街" class="btn btn-sm btn-outline-primary ">
                   <input type="radio" name="add_stage" autocomplete="off" value="村と街">村と街
@@ -214,7 +214,7 @@
           <div class="col-9 px-0">
             <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
               <label id="オンライン" class="btn btn-sm btn-outline-primary rule-factor active" onclick="show_combat_power()">
-                <input type="radio" name="environment" autocomplete="off" value="オンライン" checked>オンライン
+                <input type="radio" name="environment" autocomplete="off" value="オンライン" checked="checked">オンライン
               </label>
               <label id="オフライン" class="btn btn-sm btn-outline-primary rule-factor" onclick="hide_combat_power()">
                 <input type="radio" name="environment" autocomplete="off" value="オフライン">オフライン
@@ -223,7 +223,7 @@
             <div class="collapse show" id="collapseCombatpower">
               <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
                 <label id="vip" class="btn btn-sm btn-outline-primary active">
-                  <input type="radio" name="combat_power" autocomplete="off" value="vip" checked>vip
+                  <input type="radio" name="combat_power" autocomplete="off" value="vip" checked="checked">vip
                 </label>
                 <label id="600万" class="btn btn-sm btn-outline-primary">
                   <input type="radio" name="combat_power" autocomplete="off" value="600万">600万~
@@ -249,7 +249,7 @@
             <div class="col-3 px-0"><label class="control-label charge_kiri">チャージ切り札</label></div>
             <div class="btn-group btn-group-toggle col-9" data-toggle="buttons">
               <label id="charge_なし" class="btn btn-sm btn-outline-primary rule-factor active">
-                <input type="radio" name="charge_kiri" autocomplete="off" value="なし" checked>なし
+                <input type="radio" name="charge_kiri" autocomplete="off" value="なし" checked="checked">なし
               </label>
               <label id="charge_あり" class="btn btn-sm btn-outline-primary rule-factor">
                 <input type="radio" name="charge_kiri" autocomplete="off" value="あり">あり
@@ -261,7 +261,7 @@
             <div class="col-3 px-0"><label class="control-label">アイテム</label></div>
             <div class="btn-group btn-group-toggle col-9" data-toggle="buttons">
               <label id="item_なし" class="btn btn-sm btn-outline-primary rule-factor active">
-                <input type="radio" name="item" autocomplete="off" value="なし" checked>なし
+                <input type="radio" name="item" autocomplete="off" value="なし" checked="checked">なし
               </label>
               <label id="item_あり" class="btn btn-sm btn-outline-primary rule-factor">
                 <input type="radio" name="item" autocomplete="off" value="あり">あり
@@ -349,6 +349,7 @@
 
   function load_result(url_hash, my_img, enemy_img){
     $.cookie.json = true;
+    var url_hash = location.hash;
     if (url_hash){
       console.log("load_result successful");
       var target = "result_" + url_hash.toString().split("=").pop();
@@ -359,12 +360,11 @@
       active_reset();
       console.log("active_reset");
       console.log(cookie.my_char_path);
-      $("#stock_" + cookie.stock).attr("checked", true);
-      $("#"+cookie.stage).attr("checked", true);
-      $("#"+cookie.environment).attr("checked", true);
-      $("#"+cookie.combat_power).attr("checked", true);
-      $("#charge_" + cookie.charge_kiri).attr("checked", true);
-      $("#item_" + cookie.item).attr("checked", true);
+      $("input[name='stock']").val([cookie.stock]);
+      $("input[name='environment']").val([cookie.environment]);
+      $("input[name='combat_power']").val([cookie.combat_power]);
+      $("input[name='charge_kiri']").val([cookie.charge_kiri]);
+      $("input[name='item']").val([cookie.item]);
       $("#stock_" + cookie.stock).addClass("active");
       $("#"+cookie.stage).addClass("active");
       $("#"+cookie.environment).addClass("active");
@@ -382,7 +382,13 @@
       $("#vs_HN").val(cookie.vs_HN);
 
       if (cookie.stage !== "終点" && cookie.stage !== "戦場"){
+        $("#その他").addClass("active")
+        $("input[name='stage']").val(["その他"]);
+        $("input[name='add_stage']").val([cookie.stage]);
         show_add_stage();
+      }
+      else{
+        $("input[name='stage']").val([cookie.stage]);
       }
       if (cookie.environment === "オフライン"){
         hide_combat_power();
@@ -391,13 +397,6 @@
   }
 
   function active_reset(){
-    /*$("input[name='stock']").attr("checked", false);
-    $("input[name='stage']").attr("checked", false);
-    $("input[name='environment']").attr("checked", false);
-    $("input[name='combat_power']").attr("checked", false);
-    $("input[name='charge_kiri']").attr("checked", false);
-    $("input[name='item']").attr("checked", false);
-    $("#vs_HN option").attr("checked", false);*/
     $("#stock_1").removeClass("active");
     $("#stock_2").removeClass("active");
     $("#stock_3").removeClass("active");
@@ -506,6 +505,7 @@
     var enemy_char_now = img_to_char(enemy_char_path_now);
     var stock_now = $("input[name='stock']:checked").val();
     var stage_now = $("input[name='stage']:checked").val();
+    console.log(stage_now);
     var environment_now = $("input[name='environment']:checked").val();
     var combat_power_now = $("input[name='combat_power']:checked").val();
     var charge_kiri_now = $("input[name='charge_kiri']:checked").val();
@@ -515,10 +515,14 @@
     if (stage_now === "その他"){
       stage_now = $("input[name='add_stage']:checked").val();
     }
+    if (environment_now === "オフライン"){
+      combat_power_now = null;
+    }
     var id_now = decide_cnt(url_hash);
     var tag = "result_" + id_now;
 
     var result = {
+      available : available_flag,
       id : id_now,
       my_char : my_char_now,
       my_char_path : my_char_path_now,
@@ -532,7 +536,6 @@
       item : item_now,
       vs_HN : vs_HN_now,
       game : game_now,
-      available : available_flag
     }
     console.log("result_save----");
     console.log(tag);
@@ -541,18 +544,18 @@
 
     if(url_hash){
       window.location.href = ("./stats.html");
-      $.cookie("hinstory_info_changed", true);
     }
     make_history(game_now, my_char_now, enemy_char_now);
   }
 
   function decide_cnt(url_hash){
+    console.log("decide_cnt");
     var cnt = $.cookie("cnt", Number);
     if (url_hash){
-      cnt = url_hash.toString().split("=").pop();
+      console.log("hashcheck editmode");
+      cnt = parseInt(url_hash.toString().split("=").pop());
     }
-    else{
-      if(typeof cnt === "undefined"){
+    else if(typeof cnt === "undefined"){
         cnt = 1;
         $.cookie("cnt", cnt, {path: "/" });
       }
@@ -560,7 +563,6 @@
         cnt++;
         $.cookie("cnt", cnt, {path: "/" });
       }
-    }
     return cnt;
   }
 

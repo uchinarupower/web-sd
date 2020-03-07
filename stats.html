@@ -92,12 +92,13 @@ $(document).ready(function(){
   $.cookie.json = true;
 
   var cnt = $.cookie("cnt", Number);
-  console.log(cnt);
+  console.log("cnt:"+cnt);
   if(typeof cnt !== "undefined"){
     for(var i=1; i<=cnt; i++){
       var target = "result_" + i;
-      console.log($.cookie(target));
       var cookie = $.cookie(target);
+      console.log("cookie.id:"+ cookie.id);
+      console.log($.cookie(target));
       if(cookie.available === true){
         if(cookie.game === "win"){
           bun = "<tr><th><font class='judge' color='danger'>Win&nbsp;</font></th>"
@@ -118,7 +119,6 @@ $(document).ready(function(){
                 + "<td align='center'><button type='button' class='btn btn-sm btn-info edit-btn' onclick='edit_result(" + i + ")'>編集</td>";
         }
         $("#table_body").after(bun);
-        console.log(cookie.id)
       }
     }
   }
