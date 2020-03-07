@@ -55,17 +55,17 @@
     <canvas class="my-4 w-100" id="myChart" width="900" height="300"></canvas>
   </div>
   <h2 class="h4">戦績</h2>
-  <div class="table-responsive">
-    <table class="table table-striped table-sm">
+  <div class="table-responsive" align="center">
+    <table class="table table-striped table-sm table-head">
       <thead>
         <tr>
           <th>勝敗</th>
-          <th class="table-head">使用キャラ</th>
-          <th class="table-head">対戦キャラ</th>
-          <th class="table-head">機数</th>
-          <th class="table-head">ステージ</th>
-          <th class="table-head">環境</th>
-          <th class="table-head">編集</th>
+          <th>使用キャラ</th>
+          <th>対戦キャラ</th>
+          <th>機数</th>
+          <th>ステージ</th>
+          <th>環境</th>
+          <th>編集</th>
         </tr>
       </thead>
       <tbody id="table_body">
@@ -99,21 +99,21 @@ $(document).ready(function(){
       var cookie = $.cookie(target);
       if(cookie.game === "win"){
         bun = "<tr><th><font class='judge' color='danger'>Win&nbsp;</font></th>"
-              + "<th><img class='result-table-icon' src=./img/icon/" + cookie.my_char_path + " alt=''></th>"
-              + "<th><img class='result-table-icon' src=./img/icon/" + cookie.enemy_char_path + " alt=''></th>"
-              + "<th>" + cookie.stock + "</th>"
-              + "<th>" + cookie.stage + "</th>"
-              + "<th>" + cookie.environment.substr(0,2) + "</th>"
-              + "<th><button type='button' class='btn btn-sm btn-info edit-btn' onclick='edit_result(" + i + ")'>編集</th>";
+              + "<td align='center'><img class='result-table-icon' src=./img/icon/" + cookie.my_char_path + " alt=''></td>"
+              + "<td align='center'><img class='result-table-icon' src=./img/icon/" + cookie.enemy_char_path + " alt=''></td>"
+              + "<td align='center'>" + cookie.stock + "</td>"
+              + "<td align='center'>" + cookie.stage + "</td>"
+              + "<td align='center'>" + cookie.environment.substr(0,2) + "</td>"
+              + "<td align='center'><button type='button' class='btn btn-sm btn-info edit-btn' onclick='edit_result(" + i + ")'>編集</td>";
       }
       else{
         bun = "<tr><th><font class='judge' color='success'>Lose</font></div></th>"
-              + "<th><img class='result-table-icon' src=./img/icon/" + cookie.my_char_path + " alt=''></th>"
-              + "<th><img class='result-table-icon' src=./img/icon/" + cookie.enemy_char_path + " alt=''></th>"
-              + "<th>" + cookie.stock + "</th>"
-              + "<th>" + cookie.stage + "</th>"
-              + "<th>" + cookie.environment.substr(0,2) + "</th>"
-              + "<th><button type='button' class='btn btn-sm btn-info edit-btn' onclick='edit_result(" + i + ")'>編集</th>";
+              + "<td align='center'><img class='result-table-icon char_img' src=./img/icon/" + cookie.my_char_path + " alt=''></td>"
+              + "<td align='center'><img class='result-table-icon char_img' src=./img/icon/" + cookie.enemy_char_path + " alt=''></td>"
+              + "<td align='center'>" + cookie.stock + "</td>"
+              + "<td align='center'>" + cookie.stage + "</td>"
+              + "<td align='center'>" + cookie.environment.substr(0,2) + "</td>"
+              + "<td align='center'><button type='button' class='btn btn-sm btn-info edit-btn' onclick='edit_result(" + i + ")'>編集</td>";
       }
       $("#table_body").after(bun);
       console.log(cookie.id)
