@@ -11,3 +11,11 @@ img.result-table-icon{
   display: inline-block;
   vertical-align: middle;
 }
+
+.edit-btn{
+  font-size: 0.6rem !important;
+}
+
+body{
+  font-size: 0.6rem !important;
+}
