@@ -294,10 +294,10 @@
 
         <div class="row">
           <div class="col-6 win-lose-col">
-            <button id="win" type="button" class="btn btn-danger btn-lg win-lose-btn" onclick="save_result(this, true)">Win</button>
+            <button id="win" type="button" class="btn btn-danger btn-lg win-lose-btn" onclick="save_result('win', true)">Win</button>
           </div>
           <div class="col-6 win-lose-col">
-            <button id="lose" type="button" class="btn btn-success btn-lg win-lose-btn" onclick="save_result(this, true)" >Lose</button>
+            <button id="lose" type="button" class="btn btn-success btn-lg win-lose-btn" onclick="save_result('lose', true)" >Lose</button>
           </div>
         </div>
         <div class="result-check-box">
@@ -333,8 +333,10 @@
     my_img.src = "./img/icon/01.png";
     $("#enemy_char_imgbtn").css("margin-right",offset_width);
     enemy_img.src = "./img/icon/01.png";
+    var url_hash = location.hash;
     load_vs_HN();
-    load_result(my_img, enemy_img);
+    load_result(url_hash, my_img, enemy_img);
+    show_delete_box(url_hash);
   });
 
   $(window).resize(function(){
@@ -345,9 +347,8 @@
     $("#enemy_char_imgbtn").css("margin-right",offset_width);
   });
 
-  function load_result(my_img, enemy_img){
+  function load_result(url_hash, my_img, enemy_img){
     $.cookie.json = true;
-    var url_hash = location.hash;
     if (url_hash){
       console.log("load_result successful");
       var target = "result_" + url_hash.toString().split("=").pop();
@@ -430,6 +431,13 @@
     }
   }
 
+  function show_delete_box(url_hash){
+    if(url_hash){
+      bun = "<button type='button' class='btn btn-outline-danger btn-lg btn-block' onclick='save_result(null, false)'>この記録を削除する</button>"
+      $(".result-check-box").before(bun);
+    }
+  }
+
   $('#exampleModalLong').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget);
     var title = button.data('whatever');
@@ -503,12 +511,11 @@
     var charge_kiri_now = $("input[name='charge_kiri']:checked").val();
     var item_now = $("input[name='item']:checked").val();
     var vs_HN_now = $("#vs_HN option:checked").text();
-    var game_now = win_or_lose.id;
+    var game_now = win_or_lose;
     if (stage_now === "その他"){
       stage_now = $("input[name='add_stage']:checked").val();
     }
     var id_now = decide_cnt(url_hash);
-    var available_now = available_flag;
     var tag = "result_" + id_now;
 
     var result = {
@@ -547,12 +554,13 @@
     else{
       if(typeof cnt === "undefined"){
         cnt = 1;
+        $.cookie("cnt", cnt, {path: "/" });
       }
       else{
         cnt++;
+        $.cookie("cnt", cnt, {path: "/" });
       }
     }
-    $.cookie("cnt", cnt, {path: "/" });
     return cnt;
   }
 

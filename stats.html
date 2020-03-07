@@ -92,31 +92,34 @@ $(document).ready(function(){
   $.cookie.json = true;
 
   var cnt = $.cookie("cnt", Number);
+  console.log(cnt);
   if(typeof cnt !== "undefined"){
     for(var i=1; i<=cnt; i++){
       var target = "result_" + i;
       console.log($.cookie(target));
       var cookie = $.cookie(target);
-      if(cookie.game === "win"){
-        bun = "<tr><th><font class='judge' color='danger'>Win&nbsp;</font></th>"
-              + "<td align='center'><img class='result-table-icon' src=./img/icon/" + cookie.my_char_path + " alt=''></td>"
-              + "<td align='center'><img class='result-table-icon' src=./img/icon/" + cookie.enemy_char_path + " alt=''></td>"
-              + "<td align='center'>" + cookie.stock + "</td>"
-              + "<td align='center'>" + cookie.stage + "</td>"
-              + "<td align='center'>" + cookie.environment.substr(0,2) + "</td>"
-              + "<td align='center'><button type='button' class='btn btn-sm btn-info edit-btn' onclick='edit_result(" + i + ")'>編集</td>";
+      if(cookie.available === true){
+        if(cookie.game === "win"){
+          bun = "<tr><th><font class='judge' color='danger'>Win&nbsp;</font></th>"
+                + "<td align='center'><img class='result-table-icon' src=./img/icon/" + cookie.my_char_path + " alt=''></td>"
+                + "<td align='center'><img class='result-table-icon' src=./img/icon/" + cookie.enemy_char_path + " alt=''></td>"
+                + "<td align='center'>" + cookie.stock + "</td>"
+                + "<td align='center'>" + cookie.stage + "</td>"
+                + "<td align='center'>" + cookie.environment.substr(0,2) + "</td>"
+                + "<td align='center'><button type='button' class='btn btn-sm btn-info edit-btn' onclick='edit_result(" + i + ")'>編集</td>";
+        }
+        else{
+          bun = "<tr><th><font class='judge' color='success'>Lose</font></div></th>"
+                + "<td align='center'><img class='result-table-icon char_img' src=./img/icon/" + cookie.my_char_path + " alt=''></td>"
+                + "<td align='center'><img class='result-table-icon char_img' src=./img/icon/" + cookie.enemy_char_path + " alt=''></td>"
+                + "<td align='center'>" + cookie.stock + "</td>"
+                + "<td align='center'>" + cookie.stage + "</td>"
+                + "<td align='center'>" + cookie.environment.substr(0,2) + "</td>"
+                + "<td align='center'><button type='button' class='btn btn-sm btn-info edit-btn' onclick='edit_result(" + i + ")'>編集</td>";
+        }
+        $("#table_body").after(bun);
+        console.log(cookie.id)
       }
-      else{
-        bun = "<tr><th><font class='judge' color='success'>Lose</font></div></th>"
-              + "<td align='center'><img class='result-table-icon char_img' src=./img/icon/" + cookie.my_char_path + " alt=''></td>"
-              + "<td align='center'><img class='result-table-icon char_img' src=./img/icon/" + cookie.enemy_char_path + " alt=''></td>"
-              + "<td align='center'>" + cookie.stock + "</td>"
-              + "<td align='center'>" + cookie.stage + "</td>"
-              + "<td align='center'>" + cookie.environment.substr(0,2) + "</td>"
-              + "<td align='center'><button type='button' class='btn btn-sm btn-info edit-btn' onclick='edit_result(" + i + ")'>編集</td>";
-      }
-      $("#table_body").after(bun);
-      console.log(cookie.id)
     }
   }
 });
